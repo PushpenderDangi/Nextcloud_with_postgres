@@ -1,12 +1,12 @@
-1. Introduction
+# 1. Introduction
    
-1.1 What is Nextcloud?
+## 1.1 What is Nextcloud?
 
 Nextcloud is an open-source, self-hosted cloud storage solution that allows individuals and organizations to store, manage, and share files and data securely. It provides a comprehensive suite of tools for file synchronization, sharing, collaboration, and communication.
 
-1.2 Features of Nextcloud
+## 1.2 Features of Nextcloud
 
-File Synchronization and Sharing:
+## File Synchronization and Sharing:
 
 Allows users to synchronize files across multiple devices and share them with others, both internally and externally.
 Collaboration Tools:
@@ -23,12 +23,12 @@ Security and Privacy:
 
 End-to-end encryption, two-factor authentication, and secure file access protocols.
 
-Extensibility:
+## Extensibility:
 
 A wide range of apps and plugins available for extending functionality, including calendar, contacts, mail integration, and more.
 Mobile and Desktop Clients: Native applications for various operating systems, including Android, iOS, Windows, macOS, and Linux.
 
-1.3 Benefits of Using Nextcloud
+### 1.3 Benefits of Using Nextcloud
 
 Control and Privacy:
 
@@ -40,18 +40,18 @@ Scalability:
 
 Suitable for small personal use cases to large enterprise environments.
 
-
-
-
-
-3. What is Podman? 
+# 3. What is Podman? 
 Podman is a container management tool that is compatible with Docker but offers additional features such as rootless containers. This guide will walk you through the setup of Nextcloud with a PostgreSQL database using Podman.
-2.1 Prerequisites
+
+## 2.1 Prerequisites
+
 Podman installed on your system
 Basic familiarity with command-line operations
 Access to a terminal with sudo privileges
-4. Step-by-Step Setup
-3.1 Pull the Nextcloud and PostgreSQL Images
+
+# 4. Step-by-Step Setup
+
+## 3.1 Pull the Nextcloud and PostgreSQL Images
    
 Open a terminal and pull the necessary container images from Docker Hub:
 
@@ -60,8 +60,7 @@ podman pull docker.io/library/nextcloud
 podman pull postgres
 
 
-
-3.2. Create a PostgreSQL Container
+## 3.2. Create a PostgreSQL Container
 Create a PostgreSQL container with appropriate environment variables for database initialization:
 podman run -d \
 	--name nextcloud-postgres\
@@ -77,7 +76,7 @@ POSTGRES_USER: Username for the PostgreSQL database.
 POSTGRES_PASSWORD: Password for the PostgreSQL user.
 POSTGRES_DB: Name of the PostgreSQL database.
 
-3.3. Create a Nextcloud Container
+## 3.3. Create a Nextcloud Container
 Run the Nextcloud container, linking it to the PostgreSQL container:
 podman run -d \
 	--name nextcloud \
@@ -94,14 +93,15 @@ podman run -d \
 
 
 NEXTCLOUD_ADMIN_USER: Credentials for the Nextcloud admin account.
- NEXTCLOUD_ADMIN_PASSWORD: Credentials for the Nextcloud admin account.
-3.4. Access Nextcloud
+NEXTCLOUD_ADMIN_PASSWORD: Credentials for the Nextcloud admin account.
+
+## 3.4. Access Nextcloud
 Once both containers are running, access the Nextcloud instance via a web browser:
 http://localhost:8080
 
 You should see the Nextcloud setup page. Follow the on-screen instructions to complete the configuration.
 
-4. Troubleshooting
+# 4. Troubleshooting
 Container Logs: Use podman logs <container_name> to view logs if issues arise.
 Container Status: Check running containers with podman ps.
 Port Conflicts: Ensure that port 8080 is available on your host machine or modify it as needed.
